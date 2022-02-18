@@ -1,7 +1,7 @@
 -- Gui to Lua
 -- Version: 3.2
 
--- Instances: -- e
+-- Instances: --
 
 local HUB2 = Instance.new("ScreenGui")
 local Background = Instance.new("Frame")
