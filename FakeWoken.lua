@@ -1,6 +1,7 @@
 local plr = game.Players.LocalPlayer
 PREFIX = '~'
 -- BIGGER FUNCTIONS
+-- Update 1
 local swordname = 'Greatsword'
 function call(w) 
 	if w == 'M1' then
