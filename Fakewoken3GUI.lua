@@ -24,9 +24,9 @@ local OpenBack = Instance.new("TextButton")
 --Properties:
 
 HUB2.Name = "HUB2"
-HUB2.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+HUB2.Parent = game.CoreGui
 HUB2.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
+HUB2.ResetOnSpawn = false
 Background.Name = "Background"
 Background.Parent = HUB2
 Background.BackgroundColor3 = Color3.fromRGB(66, 64, 60)
@@ -318,6 +318,7 @@ local nostunning = false
 local keywalkspeed = 'H'
 local keyspeed = 100
 local keyactive = false
+m1spam = false
 plr.Chatted:Connect(function(msg)
     if msg == prefix..'w' and walkspeeding == false then
         walkspeeding = true
@@ -349,7 +350,63 @@ plr.Chatted:Connect(function(msg)
         end)
     end
 end)
+plr.Chatted:Connect(function(msg)
+    if msg == prefix..'iframes' then
+        spawn(function()
+            while wait() do
+                if nostunning == false then break end
+                pcall(function()
+                    
+                    for i,v in pairs(Char:GetChildren()) do
+                        if v.Name == 'iframes' then
+                            v.Parent = workspace
+                            wait(5)
+                            v.Parent = Char
+                        end
+                    end
+                end)
+             
+            end
+        end)
+    end
+end)
+plr.Chatted:Connect(function(msg)
+    if msg == prefix..'spoof' then
+        spawn(function()
+            while wait() do
+                game.Players.LocalPlayer.PlayerGui.TopUI.UpFrame.Username.Username.Text = 'Calabash - AzFake Hub'
+                game.Players.LocalPlayer.PlayerGui.TopUI.UpFrame.Username.UserId.Text = 'CALABASH IS REAL'
+                game.Players.LocalPlayer.PlayerGui.TopUI.UpFrame.Location.Title.Text = 'CALABASH IS REAL'
+                game.Players.LocalPlayer.PlayerGui.TopUI.UpFrame.Location.Location.Text = 'CALABASH IS REAL'
+                for i,v in pairs(Char:GetChildren()) do
+                    if v:IsA('Part') then
+                        v.Color = Color3.fromRGB(255,0,0)
+                    end
+                end
+                pcall(function()
+                    
+                    for i,v in pairs(workspace.Characters:GetChildren()) do
+                      v.Name = 'RED CALABASH'
+                      v.Humanoid.NameDisplayDistance = 1000
+                      for i,_v in pairs(v:GetChildren()) do
+                        print(_v.Name)
+                        if _v:IsA('Part') then
+                            _v.Color = Color3.fromRGB(0,0,0)
+                        end
+                      end   
+                    end
 
+                    for i,v in pairs(Char:GetChildren()) do
+                        if v:IsA('Part') then
+                            v.Color = Color3.fromRGB(255,0,0)
+                        end
+                    end
+                end)
+             
+            end
+        end)
+    end
+end)
 plr.Chatted:Connect(function(msg)
     local args = msg:split(' ')
     pcall(function()
@@ -499,6 +556,24 @@ function respond2()
     
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
 end
+
+mouse.KeyDown:Connect(function(key)
+    if key == 't' and m1spam == false then
+        m1spam = true
+        spawn(function()
+            while wait() do
+                if m1spam ~= true then break end
+                pcall(function()
+                    m1()
+                end)
+            end
+        end)
+
+    elseif key == keywalkspeed and m1spam == true then
+        m1spam = false
+    end
+end)
+
 while wait() do
 pcall(function()
 local CharacterFolder =  workspace.Characters:GetChildren()
@@ -524,7 +599,7 @@ end
 end
 if v.StatusFolder:FindFirstChild('Hitting') then
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
-if pos.Magnitude <= 17 and v.Name ~= plr.Name then
+if pos.Magnitude <= 20 and v.Name ~= plr.Name then
 
 feintorparry = math.random(1,2)
 if feintpercent == 50 then
@@ -556,13 +631,23 @@ elseif feintorparry == 3 and hasFeinted == false and feintpercent == 25 and rand
 respond2()
 elseif autoparry == true then --  and feintpercent == 0 
     parry()
+    respond()
 end
 if autoparry == true then
     if plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false then
         feint()
+        respond()
+        parry()
     end
     if plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == true then
-        m3()
+        parry()
+        respond()
+        feint()
+    end
+    if plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == true then
+        parry()
+        respond()
+        feint()
     end
 end
 end
