@@ -623,12 +623,15 @@ for i,v in pairs(CharacterFolder) do
 
 if v.StatusFolder:FindFirstChild('Stun') or v.StatusFolder:FindFirstChild('Stun1') then
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
-if pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == false then
+if pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == false and not v.StatusFolder:FindFirstChild('Stun1') then
     m1()
-elseif pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == true then
+elseif pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == true and not v.StatusFolder:FindFirstChild('Stun1') then
     m1()
     m2()
     m1()
+end
+if pos.Magnitude <= 15 and v.Name ~= plr.Name and v.StatusFolder:FindFirstChild('Stun1') then
+    m3()
 end
 end
 
@@ -682,7 +685,7 @@ parry()
 
 end
 end]]
-if v.StatusFolder:FindFirstChild('Hitting') then
+if v.StatusFolder:FindFirstChild('Hitting') or v.StatusFolder:FindFirstChild('CombatTag')then
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
 if pos.Magnitude <= range and v.Name ~= plr.Name then
     parry()
