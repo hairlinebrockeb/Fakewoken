@@ -246,10 +246,10 @@ AutoOff.MouseButton1Click:Connect(function()
 end)
 AutoFeintOff.MouseButton1Click:Connect(function()
     if autofeint == false then
-        AutoFeintOff.Text = 'On'
+        AutoFeintOff.Text = 'Autofeint On'
         autofeint = true
     elseif autofeint == true then
-        AutoFeintOff.Text = 'Off'
+        AutoFeintOff.Text = 'Autofeint Off'
         autofeint = false
     end
 end)
@@ -420,7 +420,7 @@ plr.Chatted:Connect(function(msg)
     end
 end)
 feintrange = 14.5
-local range = 14
+range = 14.2
 plr.Chatted:Connect(function(msg)
     local args = msg:split('-')
     pcall(function()
@@ -490,6 +490,13 @@ end
 function m1()
 	local args = {
 		[1] = "M1"
+	}
+	
+	game:GetService("Players").LocalPlayer.Character.Sword.ComboEvent:FireServer(unpack(args))
+end
+function m2()
+	local args = {
+		[1] = "M2"
 	}
 	
 	game:GetService("Players").LocalPlayer.Character.Sword.ComboEvent:FireServer(unpack(args))
@@ -616,7 +623,11 @@ for i,v in pairs(CharacterFolder) do
 
 if v.StatusFolder:FindFirstChild('Stun') or v.StatusFolder:FindFirstChild('Stun1') then
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
-if pos.Magnitude <= 15 and v.Name ~= plr.Name then
+if pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == false then
+    m1()
+elseif pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == true then
+    m1()
+    m2()
     m1()
 end
 end
@@ -708,22 +719,35 @@ elseif autoparry == true then --  and feintpercent == 0
     respond()
 end
 if autoparry == true and PlayerFeinted == false then
-    if plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false then
-        feint()
+    if plr.Character.StatusFolder:FindFirstChild('ParryCD') and autofeint == true then
+        plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
         respond()
         parry()
+        m1()
+    else
+        
+        parry()
+        respond()
+        parry()
+        m1()
     end
     if plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false then
 
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
         parry()
         respond()
-        feint()
     end
     if plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == false then
+        plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
         parry()
         respond()
-        feint()
+        m1()
+    end
+    if plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false then
+        plr.Character.StatusFolder:FindFirstChild('Stun'):Destroy()
+        parry()
+        respond()
+        m1()
     end
 end
 end
