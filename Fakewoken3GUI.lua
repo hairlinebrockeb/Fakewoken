@@ -17,13 +17,10 @@ local RealKey = nil
 local FoundKeyPath = nil
 local FoundKey = false
 for _,v in pairs(keys) do
-    pcall(function()
-        print('Key')
-        if keys[KeyGiven] then
-            Staged1 = true
-            KeyArray = _v
-        end
-    end)
+    if keys[KeyGiven] then
+        Staged1 = true
+        KeyArray = _v
+    end
 end
 for _,v in pairs(keys) do
     if Staged1 == true then
