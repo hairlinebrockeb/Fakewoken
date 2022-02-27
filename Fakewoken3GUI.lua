@@ -8,7 +8,7 @@ local keys = {
     ['6EnvHJD3ffdec2sadi4jdCEFGjn9223hFUuei38724hxzc:A'] = 'Synapseing';
     ['6EnvHJD3fgdec2saKi4jdCEFGjn9223hFUue8daUo4hxzc:N'] = plr.Name;
     ['6EnvHvD3fgde52saci4jvCE3FGjn9223hFUue8daU7hxhc:N'] = 'FlREHAWKS';
-    ['6EnvHvD3fgde52sac64jhCEfFGjn9323hFUue8daU7hxhc:A'] = '6rspp';
+    ['6EnvHvD3fgde52sac64jhCEfFGjn9323hFUue8daU7hchc:A'] = '6rspp';
 }
 local Staged1 = false -- Passed Key Check
 local Staged2 = false
@@ -35,7 +35,7 @@ for _,v in pairs(keys) do
         end
         if keys[KeyGiven] then
             pcall(function()
-                local SPLIT = v:split(':')
+                local SPLIT = KeyGiven:split(':')
                 if SPLIT[2] == 'A' then
                     if keys[KeyGiven] == plr.Name then
                         Staged1 = true
