@@ -18,8 +18,8 @@ local FoundKeyPath = nil
 local FoundKey = false
 for _,v in pairs(keys) do
     pcall(function()
+        print('Key')
         if keys[KeyGiven] then
-            print('Key')
             Staged1 = true
             KeyArray = _v
         end
