@@ -15,7 +15,7 @@ local Staged2 = false
 local KeyArray = 0
 local RealKey = nil
 local FoundKeyPath = nil
-local AlreadyFound = false
+local FoundKey = false
 for _,v in pairs(keys) do
     pcall(function()
         if keys[KeyGiven] then
@@ -26,12 +26,12 @@ for _,v in pairs(keys) do
 end
 for _,v in pairs(keys) do
     if Staged1 == true then
-        if keys[KeyGiven] and keys[KeyGiven] == game.Players.LocalPlayer.Name and AlreadyFound == false then
+        if keys[KeyGiven] and keys[KeyGiven] == game.Players.LocalPlayer.Name and FoundKey ~= true then
             FoundKeyPath = v
             RealKey = v
             warn('Welcome, '..game.Players.LocalPlayer.Name)
             Staged2 = true
-            AlreadyFound = true
+            FoundKey = true
         end
         if keys[KeyGiven] then
             pcall(function()
