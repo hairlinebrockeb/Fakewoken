@@ -819,8 +819,7 @@ if v.StatusFolder:FindFirstChild('FeintCD') or v.StatusFolder:FindFirstChild('Fe
     end
 end]]
 PlayerFeinted = false
-if v.StatusFolder:FindFirstChild('Hitting') then  
- 
+if v.StatusFolder:FindFirstChild('Hitting') then 
     local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
     if pos.Magnitude <= 14 and v.Name ~= plr.Name then
         
@@ -858,11 +857,6 @@ parry()
 end
 end]]
 if v.StatusFolder:FindFirstChild('Hitting') then -- or v.StatusFolder:FindFirstChild('CombatTag')
-    if not Char:FindFirstChildWhichIsA('Tool') then
-        pcall(function()
-            Char.Humanoid:EquipTool(plr.Backpack.Sword)
-        end)
-    end
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
@@ -878,7 +872,9 @@ if v:FindFirstChild('EnforcerAxe') then -- sharko
     end
 end
 if pos.Magnitude <= range and v.Name ~= plr.Name then
-
+    if not Char:FindFirstChildWhichIsA('Tool') then
+        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Sword)
+    end
     parry()
 feintorparry = math.random(1,2)
 if feintpercent == 50 then
