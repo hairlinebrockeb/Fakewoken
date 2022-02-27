@@ -860,7 +860,7 @@ end]]
 if v.StatusFolder:FindFirstChild('Hitting') then -- or v.StatusFolder:FindFirstChild('CombatTag')
     if not Char:FindFirstChildWhichIsA('Tool') then
         pcall(function()
-            Char:EquipTool(plr.Backpack.Sword)
+            Char.Humanoid:EquipTool(plr.Backpack.Sword)
         end)
     end
     pcall(function()
