@@ -19,6 +19,7 @@ local FoundKey = false
 for _,v in pairs(keys) do
     pcall(function()
         if keys[KeyGiven] then
+            print('Key')
             Staged1 = true
             KeyArray = _v
         end
@@ -26,7 +27,7 @@ for _,v in pairs(keys) do
 end
 for _,v in pairs(keys) do
     if Staged1 == true then
-        if keys[KeyGiven] and keys[KeyGiven] == game.Players.LocalPlayer.Name and FoundKey ~= true then
+        if keys[KeyGiven] and keys[KeyGiven] == game.Players.LocalPlayer.Name and FoundKey == false then
             FoundKeyPath = v
             RealKey = v
             warn('Welcome, '..game.Players.LocalPlayer.Name)
