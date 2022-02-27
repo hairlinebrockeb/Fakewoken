@@ -2,7 +2,8 @@
 
 
 local plr = game.Players.LocalPlayer
-
+-- could make it so in my game it would detect if the sword hits another swords hitbox instead of it checking if it hits the character and checking if the character is parrying#
+-- so i would make it see if it hits another swords hitbox or if it hits another swords hitbox and the player thats holding the sword that got hit by the other sword gets checked if they have the parry value
 local keys = {
     ['6EnvHYi3eddec2sadi4jdec2sdn9223hbfuei38724hxzc:A'] = 'ml_xy';
     ['6EnvHJD3ffdec2sadi4jdCEFGjn9223hFUuei38724hxzc:A'] = 'Synapseing';
@@ -546,6 +547,20 @@ plr.Chatted:Connect(function(msg)
 end)
 
 plr.Chatted:Connect(function(msg)
+    if msg == '/e trail' then
+        spawn(function()
+            while wait() do
+                for i,v in pairs(Char:GetChildren()) do
+                    if v:FindFirstChild('MomentumTrail') then
+                        v.MomentumTrail.Enabled = true
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+plr.Chatted:Connect(function(msg)
     local args = msg:split('-')
     pcall(function()
         if args[1] == '/e keyspeed' then
@@ -804,9 +819,11 @@ if v.StatusFolder:FindFirstChild('FeintCD') or v.StatusFolder:FindFirstChild('Fe
     end
 end]]
 PlayerFeinted = false
-if v.StatusFolder:FindFirstChild('Hitting') then                                                                     
+if v.StatusFolder:FindFirstChild('Hitting') then  
+ 
     local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
     if pos.Magnitude <= 14 and v.Name ~= plr.Name then
+        
         local cd = false
         spawn(function()
         
@@ -841,6 +858,11 @@ parry()
 end
 end]]
 if v.StatusFolder:FindFirstChild('Hitting') then -- or v.StatusFolder:FindFirstChild('CombatTag')
+    if not Char:FindFirstChildWhichIsA('Tool') then
+        pcall(function()
+            Char:EquipTool(plr.Backpack.Sword)
+        end)
+    end
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
