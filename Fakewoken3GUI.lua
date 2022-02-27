@@ -1,8 +1,132 @@
--- Gui to Lua
--- Version: 3.2
 
--- Instances:
 
+
+local plr = game.Players.LocalPlayer
+
+local keys = {
+    ['6EnvHYi3eddec2sadi4jdec2sdn9223hbfuei38724hxzc:A'] = 'ml_xy';
+    ['6EnvHJD3ffdec2sadi4jdCEFGjn9223hFUuei38724hxzc:A'] = 'Synapseing';
+    ['6EnvHJD3fgdec2saKi4jdCEFGjn9223hFUue8daUo4hxzc:N'] = plr.Name;
+    ['6EnvHvD3fgde52saci4jvCE3FGjn9223hFUue8daU7hxhc:N'] = 'FlREHAWKS';
+}
+local Staged1 = false -- Passed Key Check
+local Staged2 = false
+local KeyArray = 0
+local RealKey = nil
+local FoundKeyPath = nil
+local AlreadyFound = false
+for _,v in pairs(keys) do
+    pcall(function()
+        if keys[KeyGiven] then
+            Staged1 = true
+            KeyArray = _v
+        end
+    end)
+end
+for _,v in pairs(keys) do
+    if Staged1 == true then
+        if keys[KeyGiven] and keys[KeyGiven] == game.Players.LocalPlayer.Name and AlreadyFound == false then
+            FoundKeyPath = v
+            RealKey = v
+            warn('Welcome, '..game.Players.LocalPlayer.Name)
+            Staged2 = true
+            AlreadyFound = true
+        end
+        if keys[KeyGiven] then
+            pcall(function()
+                local SPLIT = v:split(':')
+                if SPLIT[2] == 'A' then
+                    if keys[KeyGiven] == plr.Name then
+                        Staged1 = true
+                        Staged2 = true
+                    end
+                end
+            end)
+        end    
+    end
+end
+if keys[KeyGiven] and keys[KeyGiven] ~= game.Players.LocalPlayer.Name then
+    warn('Correct key but incorrect userlist.')
+elseif FoundKeyPath == nil then
+    warn('Incorrect Key')
+end
+if not Staged2 then return end
+print('Key Registered')
+-- Could add admins to the key for infinite key and no checks
+-- Script: 
+
+
+
+
+
+
+local HubType = Instance.new("ScreenGui")
+local FrameBack = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
+local FrameFront = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local UIGradient_2 = Instance.new("UIGradient")
+local KeyType = Instance.new("TextLabel")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+HubType.Name = "HubType"
+HubType.Parent = game.CoreGui
+HubType.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+FrameBack.Name = "FrameBack"
+FrameBack.Parent = HubType
+FrameBack.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FrameBack.Position = UDim2.new(1.5, 0, 0.159999996, 0)
+FrameBack.Size = UDim2.new(0, 491, 0, 38)
+
+UICorner.Parent = FrameBack
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(158, 89, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
+UIGradient.Parent = FrameBack
+
+FrameFront.Name = "FrameFront"
+FrameFront.Parent = FrameBack
+FrameFront.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FrameFront.Position = UDim2.new(0.0122199589, 0, -0.157894939, 0)
+FrameFront.Size = UDim2.new(0, 485, 0, 38)
+
+UICorner_2.Parent = FrameFront
+
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(20, 212, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
+UIGradient_2.Parent = FrameFront
+
+KeyType.Name = "KeyType"
+KeyType.Parent = FrameBack
+KeyType.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KeyType.BackgroundTransparency = 0.900
+KeyType.Position = UDim2.new(0.0446355343, 0, 0.001859501, 0)
+KeyType.Size = UDim2.new(0, 452, 0, 24)
+KeyType.Font = Enum.Font.Fondamento
+KeyType.Text = "Key Used : Non Admin"
+KeyType.TextColor3 = Color3.fromRGB(0, 0, 0)
+KeyType.TextSize = 27.000
+KeyType.TextWrapped = true
+KeyType.TextXAlignment = Enum.TextXAlignment.Left
+
+UICorner_3.Parent = KeyType
+
+-- Scripts:
+
+local Back = UDim2.new(1.5, 0,0.16, 0)
+local Tweento = UDim2.new(0.635, 0,0.16, 0)
+
+KeyType.Text = KeyGiven
+wait(4)
+FrameBack:TweenPosition(Tweento)
+wait(3)
+FrameBack:TweenPosition(Back)
+
+
+wait(1.5)
+HubType:Destroy()
 local HUB2 = Instance.new("ScreenGui")
 local Background = Instance.new("Frame")
 local HubTitle = Instance.new("TextLabel")
@@ -419,8 +543,7 @@ plr.Chatted:Connect(function(msg)
         end)
     end
 end)
-feintrange = 14.5
-range = 14.2
+
 plr.Chatted:Connect(function(msg)
     local args = msg:split('-')
     pcall(function()
@@ -488,27 +611,34 @@ function feint()
 end
 end
 function m1()
+    pcall(function()
 	local args = {
 		[1] = "M1"
 	}
 	
 	game:GetService("Players").LocalPlayer.Character.Sword.ComboEvent:FireServer(unpack(args))
+end)
 end
 function m2()
+    pcall(function()
 	local args = {
 		[1] = "M2"
 	}
 	
 	game:GetService("Players").LocalPlayer.Character.Sword.ComboEvent:FireServer(unpack(args))
+end)
 end
 function m3()
+    pcall(function()
 	local args = {
 		[1] = "M3"
 	}
 	
 	game:GetService("Players").LocalPlayer.Character.Sword.ComboEvent:FireServer(unpack(args))
+end)
 end
 function respond()
+    pcall(function()
     local args = {
         [1] = "F"
     }
@@ -536,8 +666,10 @@ function respond()
     }
     
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
+end)
 end
 function parry()
+    pcall(function()
     local args = {
         [1] = "F"
     }
@@ -559,10 +691,11 @@ function parry()
     }
 
      --plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
-  
+    end)
     
 end
 function respond2()
+    pcall(function()
     local args = {
         [1] = "F"
     }
@@ -590,6 +723,7 @@ function respond2()
     }
     
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
+end)
 end
 --[[
 mouse.KeyDown:Connect(function(key)
@@ -611,10 +745,28 @@ end)
 ]]
 warn('Loaded. Welcome, '..plr.Name..' Version Type; '..Version.. ' Next Update :'..NextUpdate)
 warn('Reminder: /e spoof doesnt run continuously')
+feintrange = 14.5
+range = 14.2
+sharko_range = 40
 while wait() do
 pcall(function()
     -- Script generated by SimpleSpy - credits to exx#9394
-
+    plr.Chatted:Connect(function(msg)
+        if msg == prefix..'w' and walkspeeding == false then
+            walkspeeding = true
+            spawn(function()
+                while wait() do
+                    if walkspeeding == false then Char.Humanoid.WalkSpeed = 16 break end
+                    pcall(function()
+                        Char.Humanoid.WalkSpeed = 100
+                    end)
+                   
+                end
+            end)
+        elseif msg == prefix..'w' and walkspeeding == true then
+            walkspeeding = false
+        end
+    end)
 
 
 local CharacterFolder =  workspace.Characters:GetChildren()
@@ -625,9 +777,10 @@ if v.StatusFolder:FindFirstChild('Stun') or v.StatusFolder:FindFirstChild('Stun1
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
 if pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == false and not v.StatusFolder:FindFirstChild('Stun1') then
     m1()
-elseif pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == true and not v.StatusFolder:FindFirstChild('Stun1') then
+elseif pos.Magnitude <= 15 and v.Name ~= plr.Name and autofeint == true and not v.StatusFolder:FindFirstChild('Stun1') and not v.StatusFolder:FindFirstChild('RollCD') then
     m1()
     m2()
+    m1()
     m1()
 end
 if pos.Magnitude <= 15 and v.Name ~= plr.Name and v.StatusFolder:FindFirstChild('Stun1') then
@@ -685,9 +838,18 @@ parry()
 
 end
 end]]
-if v.StatusFolder:FindFirstChild('Hitting') or v.StatusFolder:FindFirstChild('CombatTag')then
+if v.StatusFolder:FindFirstChild('Hitting') then -- or v.StatusFolder:FindFirstChild('CombatTag')
+    pcall(function()
+        plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
+    end)
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
+if v:FindFirstChild('WatermellonShark') then -- sharko
+    if pos.Magnitude <= sharko_range and v.Name ~= plr.Name then
+        parry()
+    end
+end
 if pos.Magnitude <= range and v.Name ~= plr.Name then
+
     parry()
 feintorparry = math.random(1,2)
 if feintpercent == 50 then
@@ -719,40 +881,49 @@ elseif feintorparry == 3 and hasFeinted == false and feintpercent == 25 and rand
 respond2()
 elseif autoparry == true then --  and feintpercent == 0 
     parry()
-    respond()
 end
 if autoparry == true and PlayerFeinted == false then
-    if plr.Character.StatusFolder:FindFirstChild('ParryCD') and autofeint == true then
+    continued = false
+    pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
-        respond()
+    end)
+elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') then -- could make it so it wont run if contiue is true
+        pcall(function()
+            plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
+        end)
+        --respond()
         parry()
         m1()
-    else
-        
+        continued = true
+elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false  then
+        pcall(function()
+            plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
+        end)
         parry()
-        respond()
-        parry()
-        m1()
-    end
-    if plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false then
-
-        plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
-        parry()
-        respond()
-    end
-    if plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == false then
-        plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
+        --respond()
+        continued = true  
+elseif plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == false  then
+        pcall(function()
+            plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
+            plr.Character.StatusFolder:FindFirstChild('FeintCD'):Destroy()
+        end)
         parry()
         respond()
         m1()
-    end
-    if plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false then
+        continued = true
+elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false  then
         plr.Character.StatusFolder:FindFirstChild('Stun'):Destroy()
         parry()
         respond()
         m1()
-    end
+        continued = true
+    
+else
+    parry()
 end
+    
+
+
 end
 end
 end
