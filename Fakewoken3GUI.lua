@@ -10,6 +10,9 @@ local keys = {
     ['6EnvHJD3fgdec2saKi4jdCEFGjn9223hFUue8daUo4hxzc:N'] = plr.Name;
     ['6EnvHvD3fgde52saci4jvCE3FGjn9223hFUue8daU7hxhc:N'] = 'FlREHAWKS';
     ['6EnvHvD3fgde52sac64jhCEfFGjn9323hFUue8daU7hchc:A'] = '6rspp';
+    ['6EnvHvD3fgde52sax64j3CEfyGjn9323hFUue8daU7hchc:N'] = 'Glockies_Wrld';
+    ['6EnvHvD3fgde52sax64j3CEf6Gjn9323hFUue8daU7hchc:N'] = 'werexzwolf';
+    ['6EnvHYD3fgde52sAx64j3CEU6Gjn9723hFUue8dBU7hchc:N'] = 'DoinYourMohm';
 }
 local Staged1 = false -- Passed Key Check
 local Staged2 = false
