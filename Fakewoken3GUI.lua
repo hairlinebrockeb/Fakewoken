@@ -347,6 +347,8 @@ feintpercent = 0
 randomfeint = false
 feintdebounce = 0.5
 Background.Draggable = true
+hitboxdetectmode = false
+
 Minimise.MouseButton1Click:Connect(function()
     Fakewoken3GUI.Visible = false
     wait(.2)
@@ -384,13 +386,13 @@ AutoFeintOff.MouseButton1Click:Connect(function()
 end)
 
 RandomFeint.MouseButton1Click:Connect(function()
-    if randomfeint == false then
-        RandomFeint.Text = 'random On'
-        randomfeint = true
+    if hitboxdetectmode == false then
+        RandomFeint.Text = 'mode on'
+        hitboxdetectmode = true
     end
-    if randomfeint == false then
-        RandomFeint.Text = 'random Off'
-        randomfeint = false
+    if hitboxdetectmode == false then
+        RandomFeint.Text = 'mode off'
+        hitboxdetectmode = false
     end
 end)
 
@@ -409,7 +411,7 @@ FeintChance.FocusLost:Connect(function()
         end
     end)
 end)
-
+--[[
 Delay.FocusLost:Connect(function()
     pcall(function()
         local delaynumber = tonumber(Delay.Text)
@@ -422,7 +424,7 @@ Delay.FocusLost:Connect(function()
     end)
  
 end)
-
+]]
 
 local plr = game.Players.LocalPlayer
 Background.Draggable = true
@@ -693,6 +695,7 @@ function parry()
         [1] = "F"
     }
     
+    --[[
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
     wait()
     local args = {
@@ -703,7 +706,7 @@ function parry()
     local args = {
         [1] = "End"
     }
-    
+    ]]
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
     local args = {
         [1] = "End"
@@ -859,7 +862,7 @@ parry()
 
 end
 end]]
-if v.StatusFolder:FindFirstChild('Hitting') then -- or v.StatusFolder:FindFirstChild('CombatTag')
+if v.StatusFolder:FindFirstChild('Hitting') and hitboxdetectmode == false then -- or v.StatusFolder:FindFirstChild('CombatTag')
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
@@ -955,7 +958,20 @@ end
 
 
 end
+elseif v.StatusFolder:FindFirstChild('Hitting') and hitboxdetectmode == true then
+    pcall(function()
+        local HitBox = v.BaseSword.Hitbox
+        local Root = plr.Character.HumanoidRootPart
+        local PositionFrom = HitBox.Position - plr.Character.BaseSword.Hitbox.Position
+
+       --print(PositionFrom.X)
+        if PositionFrom.Magnitude <= 20 then
+            parry()
+            respond()
+        end
+    end)
 end
+
 end
 end)
 end
