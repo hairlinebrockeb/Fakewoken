@@ -706,12 +706,13 @@ function parry()
     local args = {
         [1] = "End"
     }
+     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
     ]]
-    game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
+   
     local args = {
         [1] = "End"
     }
-
+    game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
      --plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
     
