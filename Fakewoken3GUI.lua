@@ -862,7 +862,7 @@ parry()
 
 end
 end]]
-if v.StatusFolder:FindFirstChild('Hitting') and hitboxdetectmode == false then -- or v.StatusFolder:FindFirstChild('CombatTag')
+if v.StatusFolder:FindFirstChild('Hitting')  then -- or v.StatusFolder:FindFirstChild('CombatTag') -- and hitboxdetectmode == false
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
