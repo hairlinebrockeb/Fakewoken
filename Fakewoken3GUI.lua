@@ -867,6 +867,7 @@ if v.StatusFolder:FindFirstChild('Hitting')  then -- or v.StatusFolder:FindFirst
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
+    print('hit')
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
 if v:FindFirstChild('WatermellonShark') then -- sharko
     if pos.Magnitude <= sharko_range and v.Name ~= plr.Name then
