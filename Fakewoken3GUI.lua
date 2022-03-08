@@ -919,7 +919,7 @@ if autoparry == true and PlayerFeinted == false then
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
-elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') then -- could make it so it wont run if contiue is true
+elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and autoparry == true and PlayerFeinted == false then -- could make it so it wont run if contiue is true
         pcall(function()
             plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
         end)
@@ -927,7 +927,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') then -- could make i
         parry()
         m1()
         continued = true
-elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false  then
+elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false and autoparry == true and PlayerFeinted == false then
         pcall(function()
             plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
         end)
@@ -935,7 +935,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == fa
         m1()
         --respond()
         continued = true  
-elseif plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == false  then
+elseif plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == false and autoparry == true and PlayerFeinted == false then
         pcall(function()
             plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
             plr.Character.StatusFolder:FindFirstChild('FeintCD'):Destroy()
@@ -944,7 +944,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == fa
         respond()
         m1()
         continued = true
-elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false  then
+elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false and autoparry == true and PlayerFeinted == false then
         plr.Character.StatusFolder:FindFirstChild('Stun'):Destroy()
         parry()
         respond()
