@@ -699,7 +699,7 @@ function parry()
     local args = {
         [1] = "F"
     }
-    
+    ame:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
     --[[
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
     wait()
@@ -925,7 +925,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false
         respond()
         m1()
 else
-    respond()
+    parry()
     m1()
 end
     
