@@ -915,13 +915,13 @@ elseif plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == fa
             plr.Character.StatusFolder:FindFirstChild('FeintCD'):Destroy()
         end)
         parry()
-        respond()
+        --respond()
         m1()
       
 elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false and autoparry == true and PlayerFeinted == false then
         plr.Character.StatusFolder:FindFirstChild('Stun'):Destroy()
         parry()
-        respond()
+        --respond()
         m1()
 else
     parry()
