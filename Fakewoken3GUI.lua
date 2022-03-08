@@ -846,7 +846,8 @@ if v.StatusFolder:FindFirstChild('Hitting') then
                 PlayerFeinted = true
                 wait(0.2)
                 parry()
-                respond()
+                wait()
+                m1()
             end
         until cd == true
     end)
