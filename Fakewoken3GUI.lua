@@ -925,7 +925,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false
         respond()
         m1()
 else
-    parry()
+    respond()
     m1()
 end
     
