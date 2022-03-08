@@ -959,6 +959,7 @@ end
 
 
 end
+--[[
 elseif v.StatusFolder:FindFirstChild('Hitting') and hitboxdetectmode == true then
     pcall(function()
         local HitBox = v.BaseSword.Hitbox
@@ -971,6 +972,8 @@ elseif v.StatusFolder:FindFirstChild('Hitting') and hitboxdetectmode == true the
             respond()
         end
     end)
+
+]]
 end
 
 end
