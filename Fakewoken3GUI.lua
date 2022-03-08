@@ -888,7 +888,6 @@ if pos.Magnitude <= range and v.Name ~= plr.Name then
     if not Char:FindFirstChildWhichIsA('Tool') then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Sword)
     end
-    parry()
 if autoparry == true  and pos.Magnitude <= range then -- and PlayerFeinted == false
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
