@@ -919,6 +919,7 @@ if autoparry == true and PlayerFeinted == false then
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
+    parry()
 elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and autoparry == true and PlayerFeinted == false then -- could make it so it wont run if contiue is true
         pcall(function()
             plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
