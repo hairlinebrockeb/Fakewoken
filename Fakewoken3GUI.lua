@@ -699,7 +699,7 @@ function parry()
     local args = {
         [1] = "F"
     }
-    ame:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
+    game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
     --[[
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
     wait()
@@ -893,7 +893,6 @@ if autoparry == true  and pos.Magnitude <= range then -- and PlayerFeinted == fa
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
-    print('In range')
 elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and autoparry == true and PlayerFeinted == false then -- could make it so it wont run if contiue is true
         pcall(function()
             plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
