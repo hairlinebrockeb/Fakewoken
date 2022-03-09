@@ -786,11 +786,11 @@ pcall(function()
             walkspeeding = true
             spawn(function()
                 while wait() do
-                    pcall(function()
+                   
                     if walkspeeding == false then Char.Humanoid.WalkSpeed = 16 break end 
                         Char.Humanoid.WalkSpeed = 100
                     end
-                    end) 
+ 
                 end
             end)
         elseif msg == prefix..'w' and walkspeeding == true then
