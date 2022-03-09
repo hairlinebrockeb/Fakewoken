@@ -1,6 +1,11 @@
-
-
-if not KeyGiven then return(warn('No Key'))
+iskey = false
+pcall(function()
+    if KeyGiven then
+        print('key')
+        iskey = true
+    end
+end)
+if iskey == false then return(warn('No Key'))
 
 local plr = game.Players.LocalPlayer
 -- could make it so in my game it would detect if the sword hits another swords hitbox instead of it checking if it hits the character and checking if the character is parrying#
