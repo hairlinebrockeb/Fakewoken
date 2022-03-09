@@ -1,5 +1,6 @@
 
 
+if not KeyGiven then return(warn('No Key'))
 
 local plr = game.Players.LocalPlayer
 -- could make it so in my game it would detect if the sword hits another swords hitbox instead of it checking if it hits the character and checking if the character is parrying#
@@ -785,8 +786,8 @@ pcall(function()
             walkspeeding = true
             spawn(function()
                 while wait() do
-                    if walkspeeding == false then Char.Humanoid.WalkSpeed = 16 break end
                     pcall(function()
+                    if walkspeeding == false then Char.Humanoid.WalkSpeed = 16 break end 
                         Char.Humanoid.WalkSpeed = 100
                     end)
                    
@@ -889,7 +890,7 @@ if pos.Magnitude <= range and v.Name ~= plr.Name then
     if not Char:FindFirstChildWhichIsA('Tool') then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Sword)
     end
-if autoparry == true  and pos.Magnitude <= range then -- and PlayerFeinted == false
+if autoparry == true and PlayerFeinted == false then -- and PlayerFeinted == false
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
@@ -907,6 +908,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == fa
             plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
         end)
         parry()
+        wait()
         m1()
         --respond()
      
