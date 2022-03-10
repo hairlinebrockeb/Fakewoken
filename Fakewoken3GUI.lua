@@ -885,8 +885,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and autoparry == tru
         end)
         --respond()
         parry()
-        wait()
-        m1()
+    
 
 elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == false and autoparry == true and PlayerFeinted == false then
         pcall(function()
@@ -894,7 +893,7 @@ elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and hasFeinted == fa
         end)
         parry()
         wait()
-        m1()
+        
         --respond()
      
 elseif plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == false and autoparry == true and PlayerFeinted == false then
@@ -905,14 +904,14 @@ elseif plr.Character.StatusFolder:FindFirstChild('FeintCD') and hasFeinted == fa
         parry()
         --respond()
         wait()
-        m1()
+       
       
 elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false and autoparry == true and PlayerFeinted == false then
         plr.Character.StatusFolder:FindFirstChild('Stun'):Destroy()
         parry()
         --respond()
         wait()
-        m1()
+        
 elseif autoparry == true and PlayerFeinted == false then
     parry()
     m1()
@@ -941,4 +940,5 @@ end
 end
 end)
 end
+
 
