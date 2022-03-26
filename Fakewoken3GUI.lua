@@ -873,6 +873,7 @@ if v:FindFirstChild('EnforcerAxe') then -- sharko
         parry()
     end
 end
+pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
 if pos.Magnitude <= range and v.Name ~= plr.Name then
     if not Char:FindFirstChildWhichIsA('Tool') then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Sword)
@@ -881,6 +882,7 @@ if autoparry == true and PlayerFeinted == false then -- and PlayerFeinted == fal
     pcall(function()
         plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
     end)
+    parry()
 elseif plr.Character.StatusFolder:FindFirstChild('ParryCD') and autoparry == true and PlayerFeinted == false then -- could make it so it wont run if contiue is true
         pcall(function()
             plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
