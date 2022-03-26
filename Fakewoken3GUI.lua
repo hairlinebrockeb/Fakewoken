@@ -780,10 +780,11 @@ feintrange = 14.5
 range = 14.2
 sharko_range = 40
 enforcer_range = 20
+gun_range = 20
 previousHits = {}
 
 spawn(function()
-    while wait(0.3) do
+    while wait(0.0000000000000000000001) do
         for i,v in pairs(previousHits) do
             table.remove(previousHits,v)
         end
@@ -866,35 +867,42 @@ parry()
 
 end
 end]]
+local already_parried = false
 if v.StatusFolder:FindFirstChild('Silent')  or v.StatusFolder:FindFirstChild('Hitting') and v:FindFirstChild('Body')  then
     local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
     if pos.Magnitude <= enforcer_range and v.Name ~= plr.Name then
         parry()
+      
     end
 end
 if v.StatusFolder:FindFirstChild('Hitting')  then -- or v.StatusFolder:FindFirstChild('CombatTag') -- and hitboxdetectmode == false
-    pcall(function()
-        plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
-    end)
+  
 
 local pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
 if v:FindFirstChild('WatermellonShark') then -- sharko
     if pos.Magnitude <= sharko_range and v.Name ~= plr.Name then
         parry()
+        already_parried = true
     end
 end
 if v:FindFirstChild('EnforcerAxe') then -- sharko
     if pos.Magnitude <= enforcer_range and v.Name ~= plr.Name then
         parry()
+        already_parried = true
     end
 end
-
+if v:FindFirstChild('Gun') then -- sharko
+    if pos.Magnitude <= gun_range and v.Name ~= plr.Name then
+        parry()
+        already_parried = true
+    end
+end
 pos = v.HumanoidRootPart.Position - plr.Character.HumanoidRootPart.Position
 if pos.Magnitude <= range and v.Name ~= plr.Name then
     if not Char:FindFirstChildWhichIsA('Tool') then
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack.Sword)
     end
-if autoparry == true and PlayerFeinted == false and not table.find(previousHits,v.Name) then -- and PlayerFeinted == false
+if autoparry == true and PlayerFeinted == false and not table.find(previousHits,v.Name) and already_parried == false then -- and PlayerFeinted == false
     table.insert(previousHits,v.Name)
     parry()
 
