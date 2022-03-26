@@ -696,7 +696,7 @@ function respond()
 end)
 end
 function parry()
-    pcall(function()
+    --pcall(function()
     local args = {
         [1] = "F"
     }
@@ -719,8 +719,10 @@ function parry()
         [1] = "End"
     }
     game:GetService("Players").LocalPlayer.Character.Sword.BlockEvent:FireServer(unpack(args))
-     --plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
-    end)
+    pcall(function()
+        plr.Character.StatusFolder:FindFirstChild('ParryCD'):Destroy()
+    end) 
+--end)
     
 end
 function respond2()
@@ -915,6 +917,8 @@ elseif plr.Character.StatusFolder:FindFirstChild('Stun') and hasFeinted == false
 elseif autoparry == true and PlayerFeinted == false then
     parry()
     m1()
+elseif autoparry == true then
+    parry()
 end
     
 
